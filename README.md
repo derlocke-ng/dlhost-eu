@@ -37,6 +37,11 @@ quotes, `---` rules, code blocks between three backticks, and links, `**strong**
 and `` `code` `` in a line. A link to `terms` opens the page `terms`. HTML in a page is shown as
 text: nothing in this repository can put script on the site.
 
+Images come from `assets/` only: `![Our logo](assets/logo.svg)`. An image from elsewhere stays a
+link, so that no other server learns who reads the page. With `website_cdn_hostname` set on the
+control module (cdn.dlhost.eu here), the pages load them through that CDN, which may keep each
+file for good: its address carries the pinned commit.
+
 ## Releases
 
 `VERSION` holds the version. Pin a release's commit in the fleet file, not a branch.
