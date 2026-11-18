@@ -1,0 +1,7 @@
+# The website of a Kiwi Network (kiwi-server's control module: website_hostname, website_repo,
+# website_commit). The services, the sign-up and the status come from the network itself.
+name: dlhost
+tagline: Chat, files, code and more, run by people you can talk to.
+accent: "#13805c"
+# the pages in the menu's order; the first one is the front page
+pages: [home, join, terms, privacy, about]

@@ -1,0 +1,18 @@
+name: check
+on: [push, pull_request]
+jobs:
+  pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: every page in site.yaml is there
+        run: |
+          python3 - <<'PY'
+          import os, re, sys, yaml
+          spec = yaml.safe_load(open("site.yaml"))
+          bad = [p for p in spec.get("pages") or [] if not re.fullmatch(r"[a-z0-9][a-z0-9-]{0,40}", str(p))
+                 or not os.path.isfile("pages/%s.md" % p)]
+          if bad:
+              sys.exit("pages named in site.yaml but not there (or not a plain name): %s" % ", ".join(map(str, bad)))
+          print("ok:", ", ".join(spec["pages"]))
+          PY
